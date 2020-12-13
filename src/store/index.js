@@ -4,7 +4,15 @@ export default createStore({
   state: {
     count: 0
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    incrementCount(state) {
+      state.count++;
+    }
+  },
+  actions: {
+    incrementCount({ commit }) {
+      commit("incrementCount");
+    }
+  },
   modules: {}
 });

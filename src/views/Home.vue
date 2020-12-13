@@ -1,22 +1,24 @@
 <template>
   <div class="home">
-    <span>Count: {{ count }}</span>
+    <counter />
   </div>
 </template>
 
 <script>
-import { useStore } from "vuex";
-import { computed } from "vue";
+import Counter from "@/components/Counter.vue";
 export default {
   name: "Home",
-  setup() {
-    const store = useStore();
-
-    const count = computed(() => store.state.count);
-
-    return {
-      count
-    };
+  components: {
+    Counter
   }
 };
 </script>
+
+<style scoped>
+.home {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+}
+</style>
