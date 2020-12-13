@@ -13,7 +13,7 @@
 :root {
   --black: #2c3e50;
   --primary-color: #42b983;
-  --primary-constrast: var(--black);
+  --primary-contrast: var(--black);
   font-size: 20px;
 }
 

@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import todos from "./modules/todos";
 
 export default createStore({
   state: {
@@ -14,5 +15,7 @@ export default createStore({
       commit("incrementCount");
     }
   },
-  modules: {}
+  modules: {
+    todos
+  }
 });
