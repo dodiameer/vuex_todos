@@ -1,13 +1,13 @@
 <template>
-  <div :class="{ completed: todo.completed }">
+  <div :class="{ completed: todo.completed }" @dblclick="toggleTodo">
     <span>{{ todo.title }}</span>
     <TrashcanIcon class="icon" />
   </div>
 </template>
 
 <script>
-import trashcan from "@/assets/trashcan.svg";
 import TrashcanIcon from "@/components/icons/TrashcanIcon.vue";
+import { useStore } from "vuex";
 export default {
   name: "Todo",
   props: {
@@ -16,9 +16,15 @@ export default {
   components: {
     TrashcanIcon
   },
-  setup() {
+  setup(props) {
+    const store = useStore();
+    const toggleTodo = () => {
+      const newTodo = { ...props.todo };
+      newTodo.completed = !newTodo.completed;
+      store.dispatch("todos/updateTodo", newTodo);
+    };
     return {
-      trashcan
+      toggleTodo
     };
   }
 };
@@ -31,6 +37,7 @@ div {
   padding: 8px 12px;
   border-radius: 8px;
   position: relative;
+  user-select: none;
 }
 .completed {
   background: var(--primary-contrast);

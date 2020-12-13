@@ -23,6 +23,10 @@ export default {
     async addTodo({ commit }, todo) {
       const response = await axios.post(API_URL, todo);
       commit("addTodo", { todo: response.data });
+    },
+    async updateTodo({ commit }, todo) {
+      const response = await axios.put(`${API_URL}/${todo.id}`, todo);
+      commit("updateTodo", { todo: response.data });
     }
   },
   mutations: {
@@ -31,6 +35,13 @@ export default {
     },
     addTodo(state, { todo }) {
       state.todos = [todo, ...state.todos];
+    },
+    updateTodo(state, { todo }) {
+      const todoIdx = state.todos.findIndex(t => t.id === todo.id);
+      if (todoIdx === -1) {
+        return;
+      }
+      state.todos.splice(todoIdx, 1, todo);
     }
   }
 };
