@@ -33,6 +33,10 @@ export default {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: 1px dashed rgba(0, 0, 0, 0.75);
+}
+
 body {
   font-weight: 300;
 }

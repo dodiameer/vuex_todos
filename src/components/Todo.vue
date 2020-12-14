@@ -1,12 +1,14 @@
 <template>
-  <div
+  <button
     :class="{ completed: todo.completed }"
-    @dblclick="toggleTodo"
+    @click="toggleTodo"
     class="container"
   >
     <span>{{ todo.title }}</span>
-    <TrashcanIcon class="icon" @click="deleteTodo" />
-  </div>
+    <button @click="deleteTodo" class="icon">
+      <TrashcanIcon />
+    </button>
+  </button>
 </template>
 
 <script>
@@ -48,7 +50,10 @@ export default {
   padding: 12px;
   border-radius: 8px;
   position: relative;
+  border: none;
   user-select: none;
+  font-size: inherit;
+  text-align: unset;
 }
 .completed {
   background: var(--primary-contrast);
@@ -65,5 +70,10 @@ span {
   right: 4px;
   color: inherit;
   cursor: pointer;
+  border: none;
+  background: none;
+}
+.completed .icon:focus {
+  outline-color: var(--primary-color);
 }
 </style>
