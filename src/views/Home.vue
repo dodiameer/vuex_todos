@@ -1,18 +1,18 @@
 <template>
   <div class="home">
-    <counter class="count" />
+    <add-todo class="form" />
     <todo-list />
   </div>
 </template>
 
 <script>
-import Counter from "@/components/Counter.vue";
 import TodoList from "@/components/TodoList.vue";
+import AddTodo from "@/components/AddTodo.vue";
 export default {
   name: "Home",
   components: {
-    Counter,
-    TodoList
+    TodoList,
+    AddTodo
   }
 };
 </script>
@@ -25,8 +25,8 @@ export default {
   padding: 1rem;
 }
 
-.count {
-  width: 160px;
+.form {
+  width: 260px;
   margin: 0 auto;
 }
 </style>
