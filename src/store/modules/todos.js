@@ -9,10 +9,9 @@ export default {
   },
   getters: {
     allTodos: state => state.todos,
-    completeTodos: state => state.todos.filter(todo => todo.complete === true),
+    completeTodos: state => state.todos.filter(todo => todo.completed),
     completeTodoCount: (_, getters) => getters.completeTodos.length,
-    incompleteTodos: state =>
-      state.todos.filter(todo => todo.complete === false),
+    incompleteTodos: state => state.todos.filter(todo => !todo.completed),
     incompleteTodoCount: (_, getters) => getters.incompleteTodos.length
   },
   actions: {
