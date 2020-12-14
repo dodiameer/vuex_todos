@@ -1,5 +1,9 @@
 <template>
-  <div :class="{ completed: todo.completed }" @dblclick="toggleTodo">
+  <div
+    :class="{ completed: todo.completed }"
+    @dblclick="toggleTodo"
+    class="container"
+  >
     <span>{{ todo.title }}</span>
     <TrashcanIcon class="icon" />
   </div>
@@ -31,10 +35,10 @@ export default {
 </script>
 
 <style scoped>
-div {
+.container {
   background: var(--primary-color);
   color: var(--primary-contrast);
-  padding: 8px 12px;
+  padding: 12px;
   border-radius: 8px;
   position: relative;
   user-select: none;
@@ -42,6 +46,9 @@ div {
 .completed {
   background: var(--primary-contrast);
   color: var(--primary-color);
+}
+span {
+  margin-right: 8px;
 }
 .icon {
   width: 22px;
