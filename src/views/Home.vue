@@ -7,17 +7,12 @@
 
 <script>
 import Counter from "@/components/Counter.vue";
-import { useStore } from "vuex";
 import TodoList from "@/components/TodoList.vue";
 export default {
   name: "Home",
   components: {
     Counter,
     TodoList
-  },
-  setup() {
-    const store = useStore();
-    store.dispatch("todos/fetchFromApi");
   }
 };
 </script>
