@@ -12,6 +12,17 @@
         <option value="incompleted">Incompleted Todos</option>
       </select>
     </label>
+    <br />
+    <br />
+    <label for="limitTodos">
+      Limit todos to
+      <select name="limitTodos" id="limitTodos" v-model="limitTodos">
+        <option value="25">25</option>
+        <option value="10">10</option>
+        <option value="5">5</option>
+      </select>
+      todo
+    </label>
     <div class="grid">
       <todo v-for="todo in todos" :key="todo.id" :todo="todo" />
     </div>
@@ -30,19 +41,31 @@ export default {
   setup() {
     const store = useStore();
     const showWhichTodos = ref("all");
+    const limitTodos = ref("25");
+
     const todos = computed(() => {
       switch (showWhichTodos.value) {
         case "all":
-          return store.getters["todos/allTodos"];
+          return store.getters["todos/allTodos"].slice(
+            0,
+            parseInt(limitTodos.value)
+          );
         case "completed":
-          return store.getters["todos/completeTodos"];
+          return store.getters["todos/completeTodos"].slice(
+            0,
+            parseInt(limitTodos.value)
+          );
         case "incompleted":
-          return store.getters["todos/incompleteTodos"];
+          return store.getters["todos/incompleteTodos"].slice(
+            0,
+            parseInt(limitTodos.value)
+          );
       }
     });
     return {
       todos,
-      showWhichTodos
+      showWhichTodos,
+      limitTodos
     };
   }
 };
