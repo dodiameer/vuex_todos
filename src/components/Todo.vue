@@ -5,7 +5,7 @@
     class="container"
   >
     <span>{{ todo.title }}</span>
-    <TrashcanIcon class="icon" />
+    <TrashcanIcon class="icon" @click="deleteTodo" />
   </div>
 </template>
 
@@ -22,13 +22,20 @@ export default {
   },
   setup(props) {
     const store = useStore();
+
     const toggleTodo = () => {
       const newTodo = { ...props.todo };
       newTodo.completed = !newTodo.completed;
       store.dispatch("todos/updateTodo", newTodo);
     };
+
+    const deleteTodo = () => {
+      store.dispatch("todos/deleteTodo", props.todo.id);
+    };
+
     return {
-      toggleTodo
+      toggleTodo,
+      deleteTodo
     };
   }
 };
