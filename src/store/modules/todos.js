@@ -27,6 +27,10 @@ export default {
     async updateTodo({ commit }, todo) {
       const response = await axios.put(`${API_URL}/${todo.id}`, todo);
       commit("updateTodo", { todo: response.data });
+    },
+    async deleteTodo({ commit }, id) {
+      await axios.delete(`${API_URL}/${id}`);
+      commit("deleteTodo", { id: id });
     }
   },
   mutations: {
@@ -42,6 +46,9 @@ export default {
         return;
       }
       state.todos.splice(todoIdx, 1, todo);
+    },
+    deleteTodo(state, { id }) {
+      state.todos = state.todos.filter(todo => todo.id !== id);
     }
   }
 };
