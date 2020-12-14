@@ -72,6 +72,9 @@ export default {
 </script>
 
 <style scoped>
+div {
+  margin-top: 1.5rem;
+}
 div.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
